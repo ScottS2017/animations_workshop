@@ -1,6 +1,9 @@
 import 'dart:io';
 
 import 'package:animation_workshop/basics/animations/rotation_transition.dart';
+import 'package:animation_workshop/basics/animations/size_transition.dart';
+import 'package:animation_workshop/routes/custom_route_transition_page_one.dart';
+import 'package:animation_workshop/routes/custom_route_transition_page_two.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -53,13 +56,13 @@ class MyApp extends StatelessWidget {
     Widget build(BuildContext context) {
         return ScopedModel <SelectionsModel>(model: model,
             child: MaterialApp(
-                title: 'Flutter Animations Workshop',
+                title: 'Animations Workshop: Basics',
                 theme: ThemeData(
                     primarySwatch: Colors.blue,
                 ),
                 home: Scaffold(
                     appBar: AppBar(
-                        title: Text('Flutter Animations Workshop'),
+                        title: Text('Animations Workshop: Basics'),
                     ),
                     body: Column(
                         children: <Widget>[
@@ -148,12 +151,22 @@ class MyApp extends StatelessWidget {
                                                   ),
                                                   Padding(
                                                       padding: const EdgeInsets.only(left: 5.0,
-                                                          right: 5.0,
-                                                          top: 8.0,
-                                                          bottom: 8.0),
+                                                        right: 5.0,
+                                                        top: 8.0,
+                                                        bottom: 8.0),
                                                       child: RaisedButton(
                                                           child: Text('Rotation Transition'),
                                                           onPressed: () => model.selectedAnimation = 8,
+                                                      ),
+                                                  ),
+                                                  Padding(
+                                                      padding: const EdgeInsets.only(left: 5.0,
+                                                        right: 5.0,
+                                                        top: 8.0,
+                                                        bottom: 8.0),
+                                                      child: RaisedButton(
+                                                          child: Text('Size Transition'),
+                                                          onPressed: () => model.selectedAnimation = 9,
                                                       ),
                                                   ),
                                                   Padding(
@@ -163,7 +176,17 @@ class MyApp extends StatelessWidget {
                                                           bottom: 8.0),
                                                       child: RaisedButton(
                                                           child: Text('Staggered Animation'),
-                                                          onPressed: () => model.selectedAnimation = 9,
+                                                          onPressed: () => model.selectedAnimation = 10,
+                                                      ),
+                                                  ),
+                                                  Padding(
+                                                      padding: const EdgeInsets.only(left: 5.0,
+                                                        right: 5.0,
+                                                        top: 8.0,
+                                                        bottom: 8.0),
+                                                      child: RaisedButton(
+                                                          child: Text('Routes Transitions'),
+                                                          onPressed: () => model.selectedAnimation = 11,
                                                       ),
                                                   ),
                                               ],
@@ -179,6 +202,9 @@ class MyApp extends StatelessWidget {
                         ],
                     ),
                 ),
+                routes: <String, WidgetBuilder>{
+                    '/myNamedRoute': (BuildContext context) => RoutesTransitions2(),
+                }
             ),
         );
     }
@@ -242,7 +268,17 @@ class _AnimationDisplayState extends State<AnimationDisplay> {
                         break;
                     case 9:
                         {
+                            return SizeTransitionDemo();
+                        }
+                        break;
+                    case 10:
+                        {
                             return StaggerDemo();
+                        }
+                        break;
+                    case 11:
+                        {
+                            return RoutesTransitions();
                         }
                         break;
                     default:

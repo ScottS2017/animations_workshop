@@ -15,8 +15,20 @@ class PhysicsAnimationState extends State<PhysicsAnimation> with SingleTickerPro
     @override
     initState() {
         super.initState();
+
+        // Here is our simulation function that determines our final value
         _simulation = SimulationReplacesTicker();
-        _controller = AnimationController.unbounded(vsync: this);
+
+        // Creates an animation controller with no upper
+        // or lower bound for its value
+        _controller = AnimationController.unbounded(
+
+          // ALWAYS vsync
+          vsync: this);
+
+        // animateWith() returns _startSimulation(simulation);
+        // so our animation started here in initState()
+        // and is running
         _controller.animateWith(_simulation);
     }
 
