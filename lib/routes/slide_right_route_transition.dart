@@ -20,13 +20,3 @@ class SlideRightRoute extends PageRouteBuilder {
   );
 }
 
-// Use it with:
-
-/*
-
-Navigator.push(
-context,
-SlideRightRoute(widget: DetailScreen()),
-);
-
-*/

@@ -26,46 +26,55 @@ class RoutesTransitions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              PageRouteBuilder(
-                pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
-                  return RoutesTransitions2();
-                },
-                transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
-                  return SlideTransition(
-                    position: new Tween<Offset>(
-                      begin: const Offset(-1.0, 0.0),
-                      end: Offset.zero,
-                    ).animate(animation),
-                    child: new SlideTransition(
-                      position: new Tween<Offset>(
-                        begin: Offset.zero,
-                        end: const Offset(-1.0, 0.0),
-                      ).animate(secondaryAnimation),
-                      child: child,
-                    ),
-                  );
-                },
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 200.0,
+          width: 200.0,
+          color: Colors.green,
+        ),
+        Container(
+          child: Center(
+            child: RaisedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+                      return RoutesTransitions2();
+                    },
+                    transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+                      return SlideTransition(
+                        position: new Tween<Offset>(
+                          begin: const Offset(-1.0, 0.0),
+                          end: Offset.zero,
+                        ).animate(animation),
+                        child: new SlideTransition(
+                          position: new Tween<Offset>(
+                            begin: Offset.zero,
+                            end: const Offset(-1.0, 0.0),
+                          ).animate(secondaryAnimation),
+                          child: child,
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+              color: Colors.lightBlue,
+              child: Text(
+                'That means this',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 36.0,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            );
-          },
-          color: Colors.lightBlue,
-          child: Text(
-            'Hit Me',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 36.0,
-              fontFamily: 'Roboto',
-              fontWeight: FontWeight.bold,
             ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
