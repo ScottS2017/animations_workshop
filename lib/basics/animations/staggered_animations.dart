@@ -1,19 +1,28 @@
-import 'package:animation_workshop/solution_files/basics/animations/staggered_animations.dart';
-import 'package:animation_workshop/workshop_files/basics/main.dart';
-import 'package:flutter/foundation.dart';
+import 'package:animation_workshop/basics/animations/staggered_animations_page_two.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-class StaggeredAnimationsPageTwo extends StatelessWidget {
-  final Animation<double> controllerTwo;
+
+// **************************************************************
+// **************************************************************
+// **************************************************************
+//                  DO STUFF HERE
+// **************************************************************
+// **************************************************************
+// **************************************************************
+
+
+
+class StaggeredAnimation extends StatelessWidget {
+  final Animation<double> controller;
   final Animation<double> opacity;
   final Animation<double> width;
   final Animation<double> height;
   final Animation<BorderRadius> borderRadius;
 
-  StaggeredAnimationsPageTwo({
+  StaggeredAnimation({
     Key key,
-    this.controllerTwo,
+    this.controller,
   })  :
 
         // Each animation defined here transforms its value during the subset
@@ -22,61 +31,63 @@ class StaggeredAnimationsPageTwo extends StatelessWidget {
         // the first 10% of the controller's duration.
 
         opacity = Tween<double>(
-          begin: 1.0,
-          end: 0.2,
+          begin: 0.2,
+          end: 1.0,
         ).animate(
           CurvedAnimation(
-            parent: controllerTwo,
+            parent: controller,
             curve: Interval(
-              0.8,
-              1.0,
-              curve: Curves.ease,
-            ),
-          ),
-        ),
-        width = Tween<double>(
-          begin: 300.0,
-          end: 50.0,
-        ).animate(
-          CurvedAnimation(
-            parent: controllerTwo,
-            curve: Interval(
-              0.8,
-              0.6,
-              curve: Curves.ease,
-            ),
-          ),
-        ),
-        borderRadius = BorderRadiusTween(
-          begin: BorderRadius.circular(75.0),
-          end: BorderRadius.circular(4.0),
-        ).animate(
-          CurvedAnimation(
-            parent: controllerTwo,
-            curve: Interval(
-              0.6,
+              0.0,
               0.2,
               curve: Curves.ease,
             ),
           ),
         ),
-        height = Tween<double>(
-          begin: 300.0,
-          end: 50.0,
+        width = Tween<double>(
+          begin: 50.0,
+          end: 300.0,
         ).animate(
           CurvedAnimation(
-            parent: controllerTwo,
+            parent: controller,
             curve: Interval(
-              0.3,
-              0.0,
+              0.2,
+              0.4,
+              curve: Curves.ease,
+            ),
+          ),
+        ),
+        borderRadius = BorderRadiusTween(
+          begin: BorderRadius.circular(4.0),
+          end: BorderRadius.circular(75.0),
+        ).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(
+              0.4,
+              0.8,
+              curve: Curves.ease,
+            ),
+          ),
+        ),
+        height = Tween<double>(
+          begin: 50.0,
+          end: 300.0,
+        ).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(
+              0.7,
+              1.0,
               curve: Curves.ease,
             ),
           ),
         ),
         super(key: key);
 
-  @override
-  Widget _buildAnimationTwo(BuildContext context, Widget child) {
+  // This function is called each time the controller "ticks" a new frame.
+  // When it runs, all of the animation's values will have been
+  // updated to reflect the controller's current value.
+  Widget _buildAnimation(BuildContext context, Widget child) {
     return Container(
       padding: EdgeInsets.all(8.0),
       alignment: Alignment.center,
@@ -103,43 +114,44 @@ class StaggeredAnimationsPageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      builder: _buildAnimationTwo,
-      animation: controllerTwo,
+      builder: _buildAnimation,
+      animation: controller,
     );
   }
 }
 
-class StaggerDemoTwo extends StatefulWidget {
+class StaggerDemo extends StatefulWidget {
   @override
-  _StaggerDemoTwoState createState() => _StaggerDemoTwoState();
+  _StaggerDemoState createState() => _StaggerDemoState();
 }
 
-class _StaggerDemoTwoState extends State<StaggerDemoTwo> with TickerProviderStateMixin {
-  AnimationController _controllerTwo;
+class _StaggerDemoState extends State<StaggerDemo> with TickerProviderStateMixin {
+  AnimationController _controller;
   bool directionIsForward = true;
 
   @override
   void initState() {
     super.initState();
 
-    _controllerTwo = AnimationController(duration: const Duration(milliseconds: 5000), vsync: this);
+    _controller = AnimationController(duration: const Duration(milliseconds: 5000), vsync: this);
   }
 
   Future<Null> _playAnimation(bool forward) async {
     try {
-      print('Two is Starting');
-      await _controllerTwo.forward().orCancel;
-      print('Two is Done');
+
+      print('One is Starting');
+      await _controller.forward().orCancel;
+      print('One is Done');
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => MyApp(
-                model: SelectionsModel(),
-              ),
-        ),
-      );
+        MaterialPageRoute(builder:
+          (context) => StaggerDemoTwo(
+          ),
+      ),
+    );
 
-      /* if (forward) {
+
+     /* if (forward) {
         await _controller.forward().orCancel;
       } else if (!forward) {
         await _controller.reverse().orCancel;
@@ -152,28 +164,14 @@ class _StaggerDemoTwoState extends State<StaggerDemoTwo> with TickerProviderStat
   @override
   Widget build(BuildContext context) {
     timeDilation = 1.0; // 1.0 is normal animation speed.
-    return MaterialApp(
-      title: 'Animations Workshop: Basics',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Animations Workshop: Basics'),
-        ),
-        body: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () {
-            _playAnimation(directionIsForward);
-            directionIsForward = !directionIsForward;
-          },
-          child: Container(
-            color: Colors.grey[200],
-            child: Center(
-              child: StaggeredAnimation(controller: _controllerTwo.view),
-            ),
-          ),
-        ),
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        _playAnimation(directionIsForward);
+        directionIsForward = !directionIsForward;
+      },
+      child: Center(
+        child: StaggeredAnimation(controller: _controller.view),
       ),
     );
   }

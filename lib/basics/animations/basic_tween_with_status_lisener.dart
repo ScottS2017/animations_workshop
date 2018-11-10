@@ -17,6 +17,7 @@ class BasicTweenWithStatusListener extends StatefulWidget {
 }
 
 class _BasicTweenWithStatusListenerState extends State<BasicTweenWithStatusListener> with SingleTickerProviderStateMixin {
+
   Animation<double> animation;
   AnimationController controller;
 

@@ -1,21 +1,21 @@
 import 'dart:io';
 
-import 'package:animation_workshop/workshop_files/basics/animations/rotation_transition.dart';
-import 'package:animation_workshop/workshop_files/basics/animations/size_transition.dart';
-import 'package:animation_workshop/workshop_files/routes/custom_route_transition_page_one.dart';
-import 'package:animation_workshop/workshop_files/routes/custom_route_transition_page_two.dart';
+import 'package:animation_workshop/basics/animations/rotation_transition.dart';
+import 'package:animation_workshop/basics/animations/size_transition.dart';
+import 'package:animation_workshop/routes/custom_route_transition_page_one.dart';
+import 'package:animation_workshop/routes/custom_route_transition_page_two.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:animation_workshop/workshop_files/basics/animations/empty_screen.dart';
-import 'package:animation_workshop/workshop_files/basics/animations/fade_transition.dart';
-import 'package:animation_workshop/workshop_files/basics/animations/physics.dart';
-import 'package:animation_workshop/workshop_files/basics/animations/staggered_animations.dart';
-import 'package:animation_workshop/workshop_files/basics/animations/animated_builder.dart';
-import 'package:animation_workshop/workshop_files/basics/animations/basic_tween.dart';
-import 'package:animation_workshop/workshop_files/basics/animations/examples_of_curves.dart';
-import 'package:animation_workshop/workshop_files/basics/animations/basic_tween_with_status_lisener.dart';
-import 'package:animation_workshop/workshop_files/basics/animations/animated_widget.dart';
+import 'package:animation_workshop/basics/animations/empty_screen.dart';
+import 'package:animation_workshop/basics/animations/fade_transition.dart';
+import 'package:animation_workshop/basics/animations/physics.dart';
+import 'package:animation_workshop/basics/animations/staggered_animations.dart';
+import 'package:animation_workshop/basics/animations/animated_builder.dart';
+import 'package:animation_workshop/basics/animations/basic_tween.dart';
+import 'package:animation_workshop/basics/animations/examples_of_curves.dart';
+import 'package:animation_workshop/basics/animations/basic_tween_with_status_lisener.dart';
+import 'package:animation_workshop/basics/animations/animated_widget.dart';
 
 import 'package:scoped_model/scoped_model.dart';
 

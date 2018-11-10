@@ -1,22 +1,22 @@
-import 'package:animation_workshop/solution_files/routes/custom_route_transition_page_three.dart';
-import 'package:animation_workshop/solution_files/routes/scale_route_transition.dart';
+import 'package:animation_workshop/basics/main.dart';
+import 'package:animation_workshop/routes/fade_route_transition.dart';
 import 'package:flutter/material.dart';
 
-class RoutesTransitions2 extends StatelessWidget {
-  const RoutesTransitions2({
+class RoutesTransitions3 extends StatelessWidget {
+  const RoutesTransitions3({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Routes Transitions Page 2',
+      title: 'Routes Transitions Page 3',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.green,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Routes Transitions Page 2'),
+          title: Text('Routes Transitions Page 3'),
         ),
         body: Container(
           child: Center(
@@ -24,10 +24,13 @@ class RoutesTransitions2 extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  ScaleRouteTransition(widget: RoutesTransitions3()),
+                  FadeRouteTransition(
+                    widget: MyApp(
+                      model: SelectionsModel(),
+                    )),
                 );
               },
-              color: Colors.red,
+              color: Colors.green,
               child: Text(
                 'Hit Me',
                 style: TextStyle(

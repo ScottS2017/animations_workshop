@@ -43,17 +43,7 @@ class GrowTransition extends StatelessWidget {
                                     height: 150.0,
                                 ),
                             ),
-                            AnimatedBuilder(
-                                animation: animation,
-                                builder: (BuildContext context, Widget child) {
-                                    return Container(
-                                        height: animation.value,
-                                        width: animation.value,
-                                        child: child,
-                                    );
-                                },
-                                child: child,
-                            ),
+                            CustomAnimatedBuilder(animation: animation, child: child),
                             Expanded(
                                 child: Container(
                                     color: showExpandeds == false ? Colors.white : Colors.black,
@@ -74,17 +64,7 @@ class GrowTransition extends StatelessWidget {
                                 flex: 1,
                                 child: Row(
                                     children: <Widget>[
-                                        AnimatedBuilder(
-                                            animation: animation,
-                                            builder: (BuildContext context, Widget child) {
-                                                return Container(
-                                                    height: animation.value,
-                                                    width: animation.value,
-                                                    child: child,
-                                                );
-                                            },
-                                            child: child,
-                                        ),
+                                        CustomAnimatedBuilder(animation: animation, child: child),
                                         Expanded(
                                             child: Container(
                                                 color: showExpandeds == false ? Colors.white : Colors.black,
@@ -94,16 +74,7 @@ class GrowTransition extends StatelessWidget {
                                     ],
                                 ),
                             ),
-                            AnimatedBuilder(
-                                animation: animation,
-                                builder: (BuildContext context, Widget child) {
-                                    return Container(
-                                        height: animation.value,
-                                        width: animation.value,
-                                        child: child);
-                                },
-                                child: child,
-                            ),
+                            CustomAnimatedBuilder(animation: animation, child: child),
                         ],
                     ),
                     Expanded(
@@ -120,17 +91,7 @@ class GrowTransition extends StatelessWidget {
                                     height: 150.0,
                                 ),
                             ),
-                            AnimatedBuilder(
-                                animation: animation,
-                                builder: (BuildContext context, Widget child) {
-                                    return Container(
-                                        height: animation.value,
-                                        width: animation.value,
-                                        child: child,
-                                    );
-                                },
-                                child: child,
-                            ),
+                            CustomAnimatedBuilder(animation: animation, child: child),
                             Expanded(
                                 child: Container(
                                     color: showExpandeds == false ? Colors.white : Colors.black,
@@ -145,11 +106,38 @@ class GrowTransition extends StatelessWidget {
     }
 }
 
+class CustomAnimatedBuilder extends StatelessWidget {
+  const CustomAnimatedBuilder({
+    Key key,
+    @required this.animation,
+    @required this.child,
+  }) : super(key: key);
+
+  final Animation<double> animation;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+        animation: animation,
+        builder: (BuildContext context, Widget child) {
+            return Container(
+                height: animation.value,
+                width: animation.value,
+                child: child,
+            );
+        },
+        child: child,
+    );
+  }
+}
+
 class AnimatedBuilderExample extends StatefulWidget {
     _AnimatedBuilderExampleState createState() => _AnimatedBuilderExampleState();
 }
 
 class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample> with SingleTickerProviderStateMixin {
+
     AnimationController controller;
     Animation<double> animation;
 

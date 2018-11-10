@@ -1,5 +1,5 @@
-import 'package:animation_workshop/solution_files/basics/animations/staggered_animations.dart';
-import 'package:animation_workshop/solution_files/basics/main.dart';
+import 'package:animation_workshop/basics/animations/staggered_animations.dart';
+import 'package:animation_workshop/basics/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
