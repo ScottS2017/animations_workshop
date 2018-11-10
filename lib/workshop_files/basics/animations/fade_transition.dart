@@ -1,3 +1,10 @@
+
+
+
+//**********************************
+
+
+
 import 'package:flutter/material.dart';
 
 class FadeTransitionExample extends StatefulWidget {
@@ -34,8 +41,11 @@ class _FadeTransitionExampleState extends State<FadeTransitionExample> {
 
                     // If the Widget should be visible, animate to 1.0 (fully visible). If
                     // the Widget should be hidden, animate to 0.0 (invisible).
-                    opacity: _visible ? 1.0 : 0.0,
-                    duration: Duration(milliseconds: 2000),
+
+
+                    //**********************************
+
+
 
                     // The green box needs to be the child of the AnimatedOpacity
                     child: Container(
