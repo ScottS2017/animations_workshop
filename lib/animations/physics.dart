@@ -40,19 +40,24 @@ class PhysicsAnimationState extends State<PhysicsAnimation> with SingleTickerPro
 
     @override
     Widget build(BuildContext context) {
-        return Center(
-          child: AnimatedBuilder(
-              animation: _controller,
-              builder: (BuildContext context, Widget child) {
-                  return Transform.scale(
-                      scale: _controller.value,
-                      child: child,
-                  );
-              },
-              child: FlutterLogo(
-                  size: 400.0,
-              )
-              ),
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Basic Physics'),
+          ),
+          body: Center(
+            child: AnimatedBuilder(
+                animation: _controller,
+                builder: (BuildContext context, Widget child) {
+                    return Transform.scale(
+                        scale: _controller.value,
+                        child: child,
+                    );
+                },
+                child: FlutterLogo(
+                    size: 400.0,
+                )
+                ),
+          ),
         );
     }
 }

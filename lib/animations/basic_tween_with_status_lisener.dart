@@ -49,13 +49,17 @@ class _BasicTweenWithStatusListenerState extends State<BasicTweenWithStatusListe
   }
 
   Widget build(BuildContext context) {
-    return Center(
+    return Scaffold(
+      appBar: AppBar(
+      title: Text('Status Listener'),
+    ),
+    body: Center(
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10.0),
         height: animation.value,
         width: animation.value,
         child: FlutterLogo(),
-      ),
+      ),),
     );
   }
 
